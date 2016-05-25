@@ -20,6 +20,7 @@ run: "node server/server.js"
 Åbn en browser:
 -----------------------
 Produktkataloget: http://localhost:3000/#/
+
 Administrationsdlen: http://localhost:3000/#/admin
 
 
