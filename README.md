@@ -12,14 +12,16 @@ I server/config/database.config.js indsæt dbUser og dbPassword (databasebruger 
 
 
 I kommandoprompt 
-
+----------------------
 server folderen
 
 run: "node server/server.js"
 
 Åbn en browser:
+-----------------------
 Produktkataloget: http://localhost:3000/#/
 Administrationsdlen: http://localhost:3000/#/admin
+
 
 Genopretning af data:
 
