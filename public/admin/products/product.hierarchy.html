@@ -1,0 +1,61 @@
+<div id="hierarchyContainer" class="col-md-12">
+    <div class="col-md-8">
+        <label for="showProductsCheckbox">Vis produkter</label>
+        <input type="checkbox"
+               checked="checked"
+               id="showProductsCheckbox"
+               ng-model="showProducts"
+               name="showProductsCheckbox"
+               ng-change="refreshHierarchy()">
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div ui-tree id="tree-root">
+                <ol ui-tree-nodes ng-model="hierarchy">
+                    <li ng-repeat="node in hierarchy" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div ui-tree-handle class="tree-node tree-node-content" data-nodrag>
+        <a class="btn btn-success btn-xs" ng-if="subNodesExists(node)" ng-click="toggle(this)"><span
+                class="glyphicon"
+                ng-class="{
+          'glyphicon-chevron-right': collapsed,
+          'glyphicon-chevron-down': !collapsed
+        }"></span></a>
+        {{node.title}}
+        <a class="pull-right btn btn-danger btn-xs" ng-click="removeCategory(node)">
+            <span class="glyphicon"></span>Slet kategori</a>
+        <a class="pull-right btn btn-success btn-xs" ui-sref="productcatalog.productcreate({categoryId: node.catId})" style="margin-right: 8px;">
+            <span class="glyphicon"></span>Opret produkt</a>
+        <a class="pull-right btn btn-success btn-xs" ui-sref="productcatalog.categorycreate({parentCategoryId: node.catId})" style="margin-right: 8px;">
+            <span class="glyphicon"></span>Opret kategori</a>
+        <a class="pull-right btn btn-primary btn-xs" ui-sref="productcatalog.categoryupdate({categoryId: node.catId})" style="margin-right: 8px;">
+            <span class="glyphicon"></span>Opdater kategori</a>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+            <li ng-repeat="product in node.products" data-nodrag ui-tree-node ng-include="'products_renderer.html'"></li>
+        </ol>
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+        </li>
+    </ol>
+</script>
+
+<!-- Nested node template -->
+<script type="text/ng-template" id="products_renderer.html">
+    <div ui-tree-handle class="tree-node-content tree-product-node" data-nodrag>
+        {{product.genus}} {{product.epithet}} <i>'{{product.cultivar}}'</i>
+        <a class="pull-right btn btn-danger btn-xs" ng-click="removeProduct(product.productId)">
+            <span class="glyphicon"></span>Slet produkt
+        </a>
+        <a class="pull-right btn btn-primary btn-xs" ui-sref="productcatalog.productupdate({productId: product.productId})">
+            <span class="glyphicon"></span>Opdater produkt
+        </a>
+    </div>
+</script>

@@ -1,0 +1,16 @@
+<hr>
+<h3>Importer produkter:</h3>
+<form ng-app="fileUpload" name="form" class="form-inline">
+    <div class="btn btn-link" ngf-select ng-model="file" name="file" ngf-pattern="'.json'"
+         ngf-accept="'.json'" ngf-max-size="20MB"><h4>Vælg fil</h4></div>
+    <div><h4><i>{{file.name}}</i></h4> </div>
+    <button type="submit" class=" btn btn-success" ng-click="uploadProducts()">Importer</button>
+</form>
+<hr>
+<h3>Resultat</h3>
+<ul>Produkter oprettet/opdateret:
+    <li ng-repeat="product in result.products">
+        {{product.name}}
+    </li>
+</ul>
+

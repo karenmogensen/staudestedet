@@ -1,0 +1,30 @@
+{
+  "name": "webshopClient",
+  "version": "0.0.0",
+  "authors": [
+    "karenmogensen <post@karenmogensen>"
+  ],
+  "description": "Generic product catalog client",
+  "main": "public/app.js",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "libs"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "angular-bootstrap": "^1.3.2",
+    "angular-ui-tree": "^2.14.0",
+    "bootstrap": "^3.3.6",
+    "ng-file-upload": "^12.0.4",
+    "ng-file-upload-shim": "^12.0.4",
+    "jquery": "^2.2.3",
+    "angular-ui-router": "^0.2.18"
+  },
+  "resolutions": {
+    "angular": "1.5.5"
+  }
+}

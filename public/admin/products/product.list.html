@@ -1,0 +1,63 @@
+<div class="col-md-12">
+    <div id="products" class="col-md-10">
+        <table id="productsTable" class="table table-bordered table-striped">
+            <th class="col-md-1">Slægt</th>
+            <th class="col-md-1">Art</th>
+            <th class="col-md-1">Sort</th>
+            <th class="col-md-1">Dansk navn</th>
+            <th class="col-md-5">Beskrivelse</th>
+            <th class="col-md-1"></th>
+            <th class="col-md-1"></th>
+            <tr ng-repeat="product in products | orderBy:['genus', 'epithet', 'cultivar']">
+                <td>{{ product.genus }}</td>
+                <td>{{ product.epithet }}</td>
+                <td><i>'{{ product.cultivar }}'</i></td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.longDescription }}</td>
+                <td>
+                    <a class="btn btn-success" ui-sref="productcatalog.productupdate({productId:product.productId})">Opdater</a>
+                </td>
+                <td>
+                    <form>
+                        <button type="submit" ng-click="deleteProduct(product.productId)" class="btn btn-danger">Slet</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div><!--productsSection-->
+    <div id="productsearch" class="col-md-2">
+        <form>
+            <div class="form-group col-md-12">
+                <label>Navn:</label><input ng-model="filter.searchName" class="form-control"/>
+            </div>
+            <div class="form-group col-md-12">
+                <label>Slægt:</label><input ng-model="filter.searchGenus" class="form-control"/>
+            </div>
+            <div class="form-group col-md-12">
+                <label>Art:</label><input ng-model="filter.searchEpithet" class="form-control"/>
+            </div>
+            <div class="form-group col-md-12">
+                <label>Sort:</label><input ng-model="filter.searchCultivar" class="form-control"/>
+            </div>
+            <div class="form-group col-md-12">
+                <label>Farver:</label>
+                <select ng-options="color as color for color in colors"
+                        ng-model="filter.color"
+                        class="form-control">
+                </select>
+            </div><!--color search section-->
+            <div class="form-group col-md-12">
+                <label>Kategorier:</label>
+                <select name="productCategory"
+                        id="productCategory"
+                        ng-options="category.name for category in categories track by category._id"
+                        ng-model="filter.category"
+                        class = "form-control">
+                </select>
+            </div><!--color search section-->
+            <div class="pull-right">
+                <button class="btn btn-danger btn-sm" ng-click="resetFilters()">Nulstil</button>
+            </div>
+        </form>
+    </div>
+</div>

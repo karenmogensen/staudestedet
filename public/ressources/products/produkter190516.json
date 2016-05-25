@@ -1,0 +1,26 @@
+{
+ "products":
+	[{
+		"productId": "11",
+		"name": "Ridderspore",
+		"shortDescription": "God og robust staude til staudebedet og supergod blandt græsser.",
+		"longDescription": "Gul. 70-80 cm. Juni - august. Sol. Alm. veldrænet havejord. Tørketålende. God og robust staude til staudebedet og supergod blandt græsser. Rølliken er også supergod snitblomst.",
+		"categories": ["Achillea"],
+		"prices": [{	"type": "Normalpris",
+    					"price": 25,
+    					"currency": "kr."
+				}],
+		"image": "achillea-coronation-gold.jpg",		
+		"state": "Aktiv",
+		"genus": "Achillea",
+		"cultivar": "Coronation Gold",
+		"heightMin": 70,
+		"heightMax": 80,
+		"color": "Gul",
+		"flowerStart": "Juni",
+		"flowerEnd": "August",
+		"soil": "Alm. veldrænet havejord",
+		"location": "Sol"
+		}
+	]
+}

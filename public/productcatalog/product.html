@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="content-wrapper">
+        <div class="item-container">
+            <div class="container">
+                <div class="col-md-9 product-title">
+                    {{product.genus}} {{product.epithet}} <i>'{{product.cultivar}}'</i>
+                </div>
+                <div class="col-md-9 product-subtitle">
+                    <h3>({{product.name}})</h3>
+                </div>
+                    <div class="col-md-9 product">
+                        <div class="product-image col-md-5 pull-left">
+                            <img ng-src="ressources/images/products/{{product.image}}" alt="{{product.name}}" alt=""/>
+                        </div>
+                        <div class="col-md-7 product-specs">
+                            <productdetails></productdetails>
+                        </div>
+                    </div>
+                <div class="col-md-9">
+                    <div class="col-md-12 product-desc">
+                        <h4>Beskrivelse: </h4>
+                        {{product.longDescription}}
+                    </div>
+                    <div class="product-sale">
+                    <hr>
+                    <div class="product-price" ng-show="product.prices[0]">
+                        Pris: {{product.prices[0].price}} {{product.prices[0].currency}}
+                    </div>
+                    <!--<div class="product-stock" ng-show="product.stock > 0">{{product.stock}}</div>-->
+                    <div class="product-stock">På lager</div>
+                    <hr>
+                    </div>
+                    <div class="btn-group cart">
+                        <button type="button" class="btn btn-success">
+                            Køb
+                        </button>
+                    </div>
+                    <div class="btn-group wishlist">
+                        <button type="button" class="btn btn-danger">
+                            Tilføj til ønskeseddel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

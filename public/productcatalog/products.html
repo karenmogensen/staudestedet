@@ -1,0 +1,142 @@
+<div class="container">
+    <div id="header" class="well well-sm header">
+        <div class="products-header">
+        <div class="btn-group">
+            <a href="" ng-click="changeViewGrid()" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-th"></span>Tabel</a>
+            <a href="" ng-click="changeViewList()" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-list"></span>List</a>
+            <a href="" ng-click="changeViewDetail()" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-th-list"></span>Detaljer</a>
+        </div>
+        <div id="filterProductList" class="pull-right">
+            <a class="btn btn-success btn-sm glyphicon glyphicon-search" ng-click="toogleSearch()"/>
+            <a class="btn btn-success btn-sm" ng-click="resetFilters()">Nulstil valg</a>
+            <label>Kategori:</label>
+            <select name="productCategory"
+                    id="productCategory"
+                    ng-options="category.name for category in categories track by category._id"
+                    ng-model="filter.category"
+                    class="">
+            </select>
+            <label>Farve:</label>
+            <select name="productColor"
+                    id="productColor"
+                    ng-options="color for color in colors track by color"
+                    ng-model="filter.color"
+                    class="">
+            </select>
+        </div>
+        </div>
+        <div class="col-md-12 form-inline search-section" ng-show="searchShowed">
+        <div class="col-md-3">
+            <form class="form-inline">
+                <label>Navn:</label>
+                <input type="text" ng-model="filter.searchName" class="form-control" id="filter-name" placeholder="Indtast dansk navn" />
+            </form>
+        </div>
+        <div class="col-md-9">
+            <form class="form-inline">
+                <label class="control-label">Slægt:</label>
+                <input type="text" ng-model="filter.searchGenus" class="form-control" id="filter-genus" placeholder="Indtast slægt" />
+                <label class="control-label">Art:</label>
+                <input type="text" ng-model="filter.searchEpithet" class="form-control" id="filter-epithet" placeholder="Indtast art" />
+                <label class="control-label">Sort:</label>
+                <input type="text" ng-model="filter.searchCultivar" class="form-control" id="filter-cultivar" placeholder="Indtast sort" />
+            </form>
+        </div>
+        </div>
+    </div>
+    <div id="productsContainer" class="products-container row list-group">
+        <div id="productContainer" class="item  col-md-3 {{viewClass}}" ng-repeat="product in products | orderBy:['genus', 'epithet', 'cultivar']">
+
+            <!-- Product grid view---------------------------------------------------------------------->
+            <a class="product-link" ui-sref="product({productId: product.productId})">
+            <div id="productGrid" class="product-grid thumbnail" ng-show="gridMode">
+                <img class="group list-group-image" ng-src="ressources/images/products/{{product.image}}" alt="{{product.name}}" />
+                <div class="caption">
+                    <div id="productHeaderGrid" class="grid-header">
+                    <h4 class="group inner list-group-item-heading">
+                        {{product.genus}} {{product.epithet}} <i>'{{product.cultivar}}'</i>
+                    </h4>
+                    </div>
+                    <div id="productDescriptionGrid" class="grid-description">
+                        <p class="group inner list-group-item-text">
+                            {{product.shortDescription}}
+                        </p>
+                    </div>
+                    <div id="productBottomGrid" class="grid-bottom">
+                        <div class="grid-price col-md-8">
+                            <p class="lead" ng-show="product.prices[0]">
+                                Pris: {{product.prices[0].price}} {{product.prices[0].currency}}
+                            </p>
+                        </div>
+                        <div class="grid-buy col-md-4">
+                            <a class="btn btn-success" href="http://www.staudestedet.dk">Køb</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+            <!-- Product list view---------------------------------------------------------------------->
+            <a class="product-link" ui-sref="product({productId: product.productId})">
+            <div id="productList" class="product-list" ng-show="listMode">
+                <img class="list-image group list-group-image" ng-src="ressources/images/products/{{product.image}}" alt="{{product.name}}" />
+                <div class="caption">
+                    <div id="productHeaderList" class="col-md-4 list-header">
+                        <h4 class="group inner list-group-item-heading">
+                            {{product.genus}} {{product.epithet}} <i>'{{product.cultivar}}'</i>
+                        </h4>
+                    </div>
+                    <div  id="productDescriptionList" class="col-md-4 list-description">
+                        <p class="group inner list-group-item-text">
+                            {{product.shortDescription}}
+                        </p>
+                    </div>
+                    <div id="productBottomList" class="list-bottom">
+                        <div class="list-price col-md-2">
+                            <p class="lead" ng-show="product.prices[0].price">
+                                Pris: {{product.prices[0].price}} {{product.prices[0].currency}}
+                            </p>
+                        </div>
+                        <div class="list-buy col-md-1">
+                            <a class="btn btn-success" href="http://www.staudestedet.dk">Køb</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+            <!-- Product detail list view---------------------------------------------------------------------->
+            <a class="product-link" ui-sref="product({productId: product.productId})">
+            <div id="productDetailList" class="product-detail-list" ng-show="detailMode">
+                <img class="detail-list-image group list-group-image" ng-src="ressources/images/products/{{product.image}}" alt="{{product.name}}" />
+                <div class="detail-list-left-content col-md-4 caption">
+                    <div id="productHeaderDetailList" class="col-md-12 detail-list-header">
+                        <h3 class="group inner list-group-item-heading">
+                            {{product.genus}} {{product.epithet}} <i>'{{product.cultivar}}'</i>
+                        </h3>
+                    </div>
+                    <div  id="productDescriptionDetailList" class="col-md-12 detail-list-description">
+                        <p class="group inner list-group-item-text">
+                            {{product.longDescription}}
+                        </p>
+                    </div>
+                    <div id="productBottomDetailList" class="detail-list-bottom">
+                        <div class="detail-list-price col-md-12">
+                            <p class="lead" ng-show="product.prices[0].price">
+                                Pris: {{product.prices[0].price}} {{product.prices[0].currency}}
+                            </p>
+                        </div>
+                        <div class="detail-list-buy col-md-1">
+                            <a class="btn btn-success" href="http://www.staudestedet.dk">Køb</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-list-right-content col-md-4 ">
+                    <productdetails></productdetails>
+                </div>
+            </div>
+            </a>
+         </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <title>Title</title>
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="libs/angular-ui-tree/dist/angular-ui-tree.min.css">
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ressources/css/backend.css">
+    <link rel="stylesheet" href="ressources/css/frontend.css">
+    <link rel="stylesheet" href="ressources/css/upload.css">
+
+    <!-- Jquery -->
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<!-- insert angular templates -->
+<div ui-view id="mainContent"></div>
+<!-- External libraries -->
+<script src="libs/angular/angular.js"></script>
+<!--<script src="libs/angular-route/angular-route.js"></script>-->
+<script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="libs/angular-ui-tree/dist/angular-ui-tree.js"></script>
+<script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="libs/ng-file-upload-shim/ng-file-upload-shim.min.js"></script>
+<script src="libs/ng-file-upload/ng-file-upload.min.js"></script>
+<!-- Main angular app -->
+<script src="app.js"></script>
+<!-- Controllers -->
+<script src="admin/products/product.controller.js"></script>
+<script src="admin/products/category.controller.js"></script>
+<script src="admin/upload/upload.images.controller.js"></script>
+<script src="admin/upload/upload.products.controller.js"></script>
+<script src="admin/products/product.hierarchy.controller.js"></script>
+<script src="admin/products/product.list.controller.js"></script>
+<!-- Controllers productcatalog-------------->
+<script src="productcatalog/products.controller.js"></script>
+<script src="productcatalog/product.controller.js"></script>
+
+<!-- Services -->
+<script src="common/product.service.js"></script>
+<script src="common/category.service.js"></script>
+<script src="common/product.filter.js"></script>
+
+</body>
+</html>
