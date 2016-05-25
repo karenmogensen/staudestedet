@@ -1,5 +1,6 @@
 # staudestedet
 Produktkatalog til Staudestedet - bachelorprojekt forår 2016
+
 For at køre produktkataloget:
 Hent koden
 Kør "npm install" (sørger også for at køre bower)
