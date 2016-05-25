@@ -25,10 +25,6 @@ app.use('/api/product', productRoutes);
 app.use('/api/category', categoryRoutes);
 app.use(uploadRoutes);
 
-var username		= 'staudestedetAdmin',
-    password		= 'staudestedet2016',
-    dbServer		= 'ds011482.mlab.com:11482',
-    dbName 			= 'staudestedet';
 //Setup db connection
 mongoose.connect('mongodb://' + dbConfig.database.dbUser + ':'
                             + dbConfig.database.dbPassword + '@'

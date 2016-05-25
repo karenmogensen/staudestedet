@@ -1,15 +1,14 @@
 //Create test categories
 var mongoose = require('mongoose'),
     async = require('async'),
+    dbConfig = require('./configuration/database.config'),
     Category = require('.././server/category/category.model'),
     CategoryApi = require('.././server/category/category.api'),
 
     Price = require('.././server/product/price.model'),
 
     Perennial = require('.././server/perennial/perennial.model'),
-    PerennialApi = require('.././server/perennial/perennial.api'),
-    dbname = "staudestedet";
-
+    PerennialApi = require('.././server/perennial/perennial.api');
 
 var categoryData = {
     categories : [
@@ -318,13 +317,11 @@ var productFlagData = {
     ]
 };
 
-var username		= 'staudestedetAdmin',
-    password		= 'staudestedet2016',
-    dbServer		= 'ds011482.mlab.com:11482',
-    dbName 			= 'staudestedet';
-
 //Setup db connection
-mongoose.connect('mongodb://' + username + ':' + password + '@' + dbServer + '/' + dbName);
+mongoose.connect('mongodb://' + dbConfig.database.dbUser + ':'
+    + dbConfig.database.dbPassword + '@'
+    + dbConfig.database.dbHost + '/'
+    + dbConfig.database.dbName);
 
 //Delete existing categories and create new
 var db = mongoose.connection;
