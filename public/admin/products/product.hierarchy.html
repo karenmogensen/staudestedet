@@ -29,7 +29,7 @@
           'glyphicon-chevron-down': !collapsed
         }"></span></a>
         {{node.title}}
-        <a class="pull-right btn btn-danger btn-xs" ng-click="removeCategory(node)">
+        <a class="pull-right btn btn-danger btn-xs" ng-if="!subNodesExists(node)" ng-click="removeCategory(node)">
             <span class="glyphicon"></span>Slet kategori</a>
         <a class="pull-right btn btn-success btn-xs" ui-sref="productcatalog.productcreate({categoryId: node.catId})" style="margin-right: 8px;">
             <span class="glyphicon"></span>Opret produkt</a>
