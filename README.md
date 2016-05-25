@@ -24,7 +24,6 @@ Administrationsdlen: http://localhost:3000/#/admin
 
 
 Genopretning af data:
-
 *******************************************
 
 Hvis data skal genopfriskes er der et script, der genopretter de oprindelige data:
